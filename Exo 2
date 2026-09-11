@@ -1,0 +1,26 @@
+// Exo 3 
+
+function dechiffrerCesar(texte, decalage) {
+    const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+    let decomposition = texte.split('')
+    let dechiffrement = []
+    for (let i = 0; i < decomposition.length; i++) {
+        dechiffrement[i] = texte[i]
+        for (let j = 0; j < alphabet.length; j++) {
+            if (texte[i] == alphabet[j]) {
+                if (j - decalage > alphabet.length) {
+                    dechiffrement[i] = alphabet[j - decalage + alphabet.length]
+
+                } else {
+                    dechiffrement[i] = alphabet[j - decalage]
+
+                }
+            }
+        }
+    }
+    dechiffrement = dechiffrement.join('')
+    return dechiffrement
+
+}
+
+console.log(dechiffrerCesar('rq d frxuv o hvdls, f hvw frro', 3))
