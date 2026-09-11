@@ -1,0 +1,187 @@
+//Exo 1
+
+const temperatureCelsius = 15
+let temperatureFahrenheit = 0
+
+temperatureFahrenheit = temperatureCelsius * 9 / 5 + 32
+
+console.log(temperatureCelsius, ' °C correspond à ', temperatureFahrenheit, '°F')
+
+//Exo 3
+
+const nombre1 = 14;
+const nombre2 = 27;
+const nombre3 = 9;
+let nombre = [nombre1, nombre2, nombre3]
+let minimum = nombre1
+let egalite = 0
+
+for (let i = 0; i < nombre.length; i++) {
+    if (nombre[i] > minimum) {
+        minimum = nombre[i]
+    }
+    else {
+        if (i > 0 && nombre[i] == minimum) {
+            egalitea += 1
+        }
+    }
+}
+
+console.log(minimum)
+console.log(egalite)
+
+
+//exo 4
+
+const nombres = [4, 7, 12, 9, 18, 21, 6]
+let nombres_de_paires = 0
+let total_paires = 0
+
+for (let i = 0; i < nombres.length; i++) {
+    if (nombres[i] % 2 == 0) {
+        nombres_de_paires += 1
+        console.log('La case', i, 'du tableau est paire')
+        total_paires += nombres[i]
+    }
+
+}
+
+console.log('Nombres de nombres paires : ', nombres_de_paires)
+console.log('Total des nombres paires : ', total_paires)
+
+
+// Exo 5
+
+const langages = ["JavaScript", "Python", "Java", "PHP"];
+
+function rechercherValeur(tableau, valeur) {
+    let occurance = 0
+    for (let i = 0; i < tableau.length; i++) {
+        if (tableau[i] == valeur) {
+            occurance = i+1
+            return occurance
+        }
+    }
+    return 1
+}
+
+console.log(rechercherValeur(langages, "Java"))
+
+//exo 6
+function calculerStatistiques(nombres) {
+    let max = nombres[0];
+    let min = nombres[0];
+    let somme = 0;
+    for (let i = 0; i < nombres.length; i++) {
+        somme += nombres[i];
+        if (nombres[i] > max) {
+            max = nombres[i];
+        }
+        if (nombres[i] < min) {
+            min = nombres[i];
+        }
+    }
+    const moyenne = somme / nombres.length;
+    console.log(max, min, somme, moyenne);
+}
+
+const notes = [12, 15, 9, 18, 14];
+
+calculerStatistiques(notes);
+
+//exo 7
+const produit = {
+    nom: "Ordinateur portable",
+    prix: 900,
+    stock: 8
+};
+
+function vendreProduit(produit, quantite) {
+    if (quantite <= 0) {
+        return "la quantité doit être strictement positive.";
+    }
+    if (quantite > produit.stock) {
+        return "stock insuffisant.";
+    }
+    produit.stock -= quantite;
+    return produit.prix * quantite;
+}
+
+console.log(vendreProduit(produit, 3));
+console.log(produit.stock);
+
+//exo 8
+const etudiants = [
+    { nom: "Alice", note: 15 },
+    { nom: "Bilal", note: 8 },
+    { nom: "Chloé", note: 12 },
+    { nom: "David", note: 6 },
+    { nom: "Emma", note: 17 }
+];
+
+function selectionnerAdmis(etudiants) {
+    const admis = [];
+    for (let i = 0; i < etudiants.length; i++) {
+        if (etudiants[i].note >= 10) {
+            admis.push(etudiants[i]);
+        }
+    }
+    return admis;
+}
+
+console.log(selectionnerAdmis(etudiants));
+
+//exo 9
+function compterOccurrences(tableau) {
+    const occurrences = {};
+    for (let i = 0; i < tableau.length; i++) {
+        const valeur = tableau[i];
+        occurrences[valeur] = (occurrences[valeur] || 0) + 1;
+    }
+    return occurrences;
+}
+
+const fruits = ["pomme", "banane", "pomme", "orange", "banane", "pomme"];
+
+console.log(compterOccurrences(fruits));
+
+//exo 10
+const panier = [
+    { nom: "Clavier", prix: 50, quantite: 2 },
+    { nom: "Souris", prix: 25, quantite: 1 },
+    { nom: "Écran", prix: 200, quantite: 2 }
+];
+
+function analyserPanier(panier) {
+    let nombreArticles = 0;
+    let prixTotal = 0;
+    let produitLePlusImportant = null;
+    let sousTotalMax = 0;
+    const produitsSuperieursA100 = [];
+
+    for (let i = 0; i < panier.length; i++) {
+        const produit = panier[i];
+        const sousTotal = produit.prix * produit.quantite;
+
+        nombreArticles += produit.quantite;
+        prixTotal += sousTotal;
+
+        if (sousTotal > sousTotalMax) {
+            sousTotalMax = sousTotal;
+            produitLePlusImportant = produit.nom;
+        }
+
+        if (sousTotal > 100) {
+            produitsSuperieursA100.push(produit.nom);
+        }
+    }
+
+    return {
+        nombreArticles,
+        prixTotal,
+        produitLePlusImportant,
+        produitsSuperieursA100
+    };
+}
+
+console.log(analyserPanier(panier));
